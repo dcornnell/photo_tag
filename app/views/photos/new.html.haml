@@ -1,0 +1,20 @@
+
+= form_for @new_photo, url: photos_path, method: :post do |f|
+	Name:
+	%br
+	= f.text_field :name
+	%br
+	Upload an image
+	%br
+	=f.file_field :image
+	%br
+	Date
+	%br
+	=f.date_field :photo_date
+	%br
+	Add to an event
+	%br
+	=f.select :event_id, Event.all.collect { |e| [e.name, e.id]}
+	=f.submit "Add Photo"
+
+

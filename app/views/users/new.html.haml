@@ -1,0 +1,8 @@
+.container
+	= form_for @new_user, url: users_path, method: :post do |f|
+		Name:
+		%br
+		= f.text_field :name
+		%br
+		
+		=f.submit "Sign up"

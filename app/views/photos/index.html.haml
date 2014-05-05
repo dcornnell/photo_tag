@@ -1,0 +1,14 @@
+- @photos.each do |p|
+	
+
+	%br
+	=image_tag p.image.url
+	%br
+	= p.name
+
+	%br
+	=p.photo_date
+
+	%br
+	=p.event.name
+	
