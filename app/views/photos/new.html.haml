@@ -15,6 +15,14 @@
 	Add to an event
 	%br
 	=f.select :event_id, Event.all.collect { |e| [e.name, e.id]}
+	%br
+	/ Tags
+	/ %br
+	/ =f.fields_for :tags do|ff| 
+		
+	/ 	= ff.text_field :name
+	/ 	%br
+		
 	=f.submit "Add Photo"
 
 

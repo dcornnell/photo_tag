@@ -9,3 +9,31 @@
 
 
 = @event.user.name
+
+%br
+Comments
+%br
+-@event.comments.each do |f|
+	=f.content
+	%br
+
+
+	%br
+
+= form_for @new_comment, url: comments_path, method: :post do |f|
+	
+
+	=f.hidden_field :commentable_id, value: @new_comment.commentable_id ####
+	=f.hidden_field :commentable_type, value: @new_comment.commentable_type ####this is the correct way to get it
+	comment:
+	%br
+	= f.text_area :content
+
+	%br
+	Comment Poster
+	%br
+	= f.select :user_id, User.all.collect {|u| [u.name, u.id]}
+	%br
+	=f.submit "submit"
+
+

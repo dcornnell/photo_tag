@@ -5,11 +5,13 @@ def index
 
 	def new
 		@new_photo = Photo.new
+		@tag = @new_photo.tags.build 
+		
+
 	end
 
 	def create
 		@new_photo = Photo.new(photo_params)
-
 		if @new_photo.save
 			redirect_to photos_path
 		else
@@ -19,6 +21,10 @@ def index
 
 	def show
 		@photo = Photo.find(params[:id])
+		@new_comment = @photo.comments.build
+		@new_tag = @photo.tags.build
+		
+	
 	end
 
 	def edit
@@ -45,5 +51,9 @@ private
 
  def photo_params
  	params.require(:photo).permit!
+ 	# params.require(:photo).permit(:name, :image, :event_id, :photo_date, tags_attributes: [:name])
  end
 end
+
+
+ 

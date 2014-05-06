@@ -1,0 +1,17 @@
+
+= form_for @new_comment, url: comments_path, method: :post do |f|
+	comment:
+	%br
+	= f.text_area :content
+	%br
+	= f.select :commentable_id, 
+	%br
+	Comment Poster
+	%br
+	= f.select :user_id, User.all.collect {|u| [u.name, u.id]}
+	%br
+	=f.submit "create event"
+
+
+
+    
