@@ -1,18 +1,18 @@
 %br
 	
 .row
-	.large-6.columns
+	.large-4.columns
 		%h1 Photos	
 		%hr	
 
 
-		%ul.example-orbit{"data-orbit" => ""}
+		%ul.orbit{"data-orbit" => ""}
 			- @photos.each do |p|
 				%li
 					=image_tag p.image.url
 					.orbit-caption
 						=p.name
-	.large-6.columns
+	.large-8.columns
 		%h1 Events
 		%hr
 		%table

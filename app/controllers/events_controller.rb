@@ -23,6 +23,7 @@ def index
 	def show
 		@event = Event.find(params[:id])
 		@new_comment = @event.comments.build
+		@photos = @event.photos
 	end
 
 	def edit

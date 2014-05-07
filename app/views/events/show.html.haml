@@ -1,39 +1,51 @@
 %br
-= @event.name
-%br
+.row
+	.small-9.columns
+		%h1
+			= @event.name
+		%br
+		%h2
+		= @event.description
+		%br
+		= @event.event_date
+		%br
 
-= @event.description
-%br
-= @event.event_date
-%br
+		Hosted by:
+		%br
+		= @event.user.name
+
+		%h2
+			Comments
+
+		= form_for @new_comment, url: comments_path, method: :post do |f|
+			
+
+			=f.hidden_field :commentable_id, value: @new_comment.commentable_id ####
+			=f.hidden_field :commentable_type, value: @new_comment.commentable_type ####this is the correct way to get it
+			add comment:
+			
+			= f.text_area :content
+
+			%br
+			Comment Poster
+			%br
+			= f.select :user_id, User.all.collect {|u| [u.name, u.id]}
+			%br
+			=f.submit "submit"
+
+		
+		%br
+		-@event.comments.each do |f|
+			=f.content
+			%hr
+			%br
 
 
-= @event.user.name
+			%br
 
-%br
-Comments
-%br
--@event.comments.each do |f|
-	=f.content
-	%br
-
-
-	%br
-
-= form_for @new_comment, url: comments_path, method: :post do |f|
-	
-
-	=f.hidden_field :commentable_id, value: @new_comment.commentable_id ####
-	=f.hidden_field :commentable_type, value: @new_comment.commentable_type ####this is the correct way to get it
-	comment:
-	%br
-	= f.text_area :content
-
-	%br
-	Comment Poster
-	%br
-	= f.select :user_id, User.all.collect {|u| [u.name, u.id]}
-	%br
-	=f.submit "submit"
+	.small-3.columns
+		- @photos.each do |p|
+			%a.th{href: "/photos/#{p.id}"}
+				=image_tag p.image.url, style: "height:auto; width:auto; max-width:100%; max-height:100%"
 
 
