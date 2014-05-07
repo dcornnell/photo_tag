@@ -11,7 +11,7 @@ class TagsController < ApplicationController
 			@photo.tags << @new_tag
 			redirect_to :back
 		else
-			redirect_to photos_path
+			redirect_to :back
 		end
 	end
 

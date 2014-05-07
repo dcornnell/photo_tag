@@ -3,16 +3,19 @@
 	.small-9.columns
 		%h1
 			= @event.name
+		
+		%h3
+			%i
+				= @event.description
 		%br
-		%h2
-		= @event.description
-		%br
-		= @event.event_date
+		
+		= formatted_date(@event.event_date)
 		%br
 
 		Hosted by:
 		%br
-		= @event.user.name
+		-if @event.user.name
+			= @event.user.name
 
 		%h2
 			Comments
