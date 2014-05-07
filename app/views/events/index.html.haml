@@ -1,13 +1,17 @@
--@events.each do |f|
-
-	%br
-	= f.name
-	%br
-
-	= f.description
-	%br
-	= f.event_date
-	%br
-	
-	
-	= f.user.name
+.large-12.columns
+	%h1 Events
+	%hr
+	%table
+		%th Event
+		%th Description
+		%th Event Date
+		
+		-@events.each do |f|
+			
+			%tr
+				%td 
+					=link_to "#{f.name}",  "/events/#{f.id}"
+				%td 
+					= f.description
+				%td 
+					= f.event_date

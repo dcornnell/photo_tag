@@ -1,0 +1,36 @@
+%br
+	
+.row
+	.large-6.columns
+		%h1 Photos	
+		%hr	
+
+
+		%ul.example-orbit{"data-orbit" => ""}
+			- @photos.each do |p|
+				%li
+					=image_tag p.image.url
+					.orbit-caption
+						=p.name
+	.large-6.columns
+		%h1 Events
+		%hr
+		%table
+			%th Event
+			%th Description
+			%th Event Date
+			
+			-@events.each do |f|
+				
+				%tr
+					%td 
+						=link_to "#{f.name}",  "/events/#{f.id}"
+					%td 
+						= f.description
+					%td 
+						= f.event_date
+					
+					
+
+
+  

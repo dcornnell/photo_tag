@@ -1,28 +1,21 @@
-
-= form_for @new_photo, url: photos_path, method: :post do |f|
-	Name:
+.small-6.large-6.columns
 	%br
-	= f.text_field :name
-	%br
-	Upload an image
-	%br
-	=f.file_field :image
-	%br
-	Date
-	%br
-	=f.date_field :photo_date
-	%br
-	Add to an event
-	%br
-	=f.select :event_id, Event.all.collect { |e| [e.name, e.id]}
-	%br
-	/ Tags
-	/ %br
-	/ =f.fields_for :tags do|ff| 
-		
-	/ 	= ff.text_field :name
-	/ 	%br
-		
-	=f.submit "Add Photo"
-
+	= form_for @new_photo, url: photos_path, method: :post do |f|
+		Name:
+		%br
+		= f.text_field :name
+		%br
+		Upload an image
+		%br
+		=f.file_field :image
+		%br
+		Date
+		%br
+		=f.date_field :photo_date
+		%br
+		Add to an event
+		%br
+		=f.select :event_id, Event.all.collect { |e| [e.name, e.id]}
+		%br
+		=f.submit	"Add Photo", class: "button"
 
