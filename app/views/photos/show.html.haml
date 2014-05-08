@@ -10,6 +10,12 @@
 		%br
 		=@photo.event.name
 		%br
+		%br
+		%ul.button-group
+			%li
+				=button_to "Edit this photo", edit_photo_path, method: :get, class: "button tiny" 
+			%li
+				=button_to "Delete this photo", photo_path, method: :delete , class: "button tiny"
 	.small-3.columns 
 		
 		= form_for @new_tag, url: tags_path, method: :post do |f|
@@ -17,7 +23,7 @@
 			add tag:
 			%br
 			= f.text_area :name
-			= f.submit "submit"
+			= f.submit "submit" , class: "button tiny"
 			%br
 		-@photo.tags.each do |f|
 			-if f.name

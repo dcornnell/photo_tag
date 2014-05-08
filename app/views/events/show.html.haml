@@ -16,15 +16,34 @@
 		%br
 		-if @event.user.name
 			= @event.user.name
+		%br
+		%br
+		%ul.button-group
+			%li
+				=button_to "Edit this event", edit_event_path, method: :get, class: "button tiny" 
+			%li
+				=button_to "Delete this event", event_path, method: :delete , class: "button tiny"
 
-		%h2
-			Comments
+		%h2 Comments
+
+		%br
+
+		-@event.comments.each do |f|
+			-if f.content
+				=f.content
+				%hr
+				%br
+
+
+			
+
+		
 
 		= form_for @new_comment, url: comments_path, method: :post do |f|
 			
 
-			=f.hidden_field :commentable_id, value: @new_comment.commentable_id ####
-			=f.hidden_field :commentable_type, value: @new_comment.commentable_type ####this is the correct way to get it
+			=f.hidden_field :commentable_id, value: @new_comment.commentable_id 
+			=f.hidden_field :commentable_type, value: @new_comment.commentable_type
 			add comment:
 			
 			= f.text_area :content
@@ -34,17 +53,10 @@
 			%br
 			= f.select :user_id, User.all.collect {|u| [u.name, u.id]}
 			%br
-			=f.submit "submit"
+			=f.submit "submit" , class: "button"
 
 		
-		%br
-		-@event.comments.each do |f|
-			=f.content
-			%hr
-			%br
-
-
-			%br
+		
 
 	.small-3.columns
 		- @photos.each do |p|
