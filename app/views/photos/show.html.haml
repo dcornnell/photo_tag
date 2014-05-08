@@ -20,14 +20,16 @@
 			= f.submit "submit"
 			%br
 		-@photo.tags.each do |f|
-			.label
-				=f.name
+			-if f.name
+				.label
+					=f.name
 .row
 	%h1 Comments
 	%br
 	-@photo.comments.each do |f|
-		=f.content
-		%hr
+		- if f.content
+			=f.content
+			%hr
 		
 		
 	%h2 Add a comment:
