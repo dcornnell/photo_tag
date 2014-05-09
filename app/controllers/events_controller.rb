@@ -35,11 +35,12 @@ def index
 		if @event.update_attributes(event_params)
 			redirect_to events_path
 		else
-			redirect_to edit_events_path
+			redirect_to edit_event_path
 		end
 	end
 
 	def destroy
+		
 		@event = Event.find(params[:id])
 		@event.destroy
 		redirect_to events_path
