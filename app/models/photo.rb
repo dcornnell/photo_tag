@@ -4,4 +4,6 @@ belongs_to :event
 mount_uploader :image, ImageUploader
 has_many :comments, as: :commentable
 accepts_nested_attributes_for :tags
+validates_presence_of :photo_date
 end
+
